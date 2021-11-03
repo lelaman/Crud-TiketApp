@@ -1,0 +1,100 @@
+{{>header}}
+{{>navbar}}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+<div class="wrapper">
+<div class="sidebar">
+  <h2> Cinema XXX</h2>
+  <ul>
+    <li><a href="/"> <i class="fas fa-home">Home</i></a></li>
+    <li><a href="/ticket"><i class="fas fa-ticket-alt">Ticket</i></a></li>
+    <li><a href="/movie"> <i class="fas fa-film">Movie</i></a></li>
+    <li><a href="/type"> <i class="fas fa-list">Type</i></a></li>
+    <li><a href="/list-ticket"> <i class="fas fa-address-book"> list-Ticket</i></a></li>
+    <li><a href="#"> <i class="fas fa-map-pin">maps</i></a></li>
+  </ul>
+  <div class="social_media">
+    <a href="www.facebook.com"> <i class=" fab fa-facebook-f"></i></a>
+    <a href="www.twitter.com"> <i class=" fab fa-twitter"></i></a>
+    <a href="www.instagram.com"> <i class=" fab fa-instagram"></i></a>
+  </div> 
+  </div>
+  
+
+
+
+
+  <div class="main_content">
+    <div class="container mt-5">
+       <h3 style="text-align: center; margin:20px">List  Ticket</h3>
+		<div class="row">
+			<div class="container">
+        <div class="row">
+            {{#each ticket}} 
+            <div class="col-md-6 col-lg-4">
+                <div class="card mx-30">
+                  <img src="{{this.photo}}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"> No.{{this.ticket_number}}</h5>
+                      <h6> 
+                       {{this.movie}}</h6>
+                       
+
+                        </div>
+
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detail{{this.ticket }}">
+                        Detail
+                    </button>
+
+                     <div class="modal fade" id="detail {{this.ticketId}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                             <div class="modal-header">
+                              <h5 class="modal-title" id="staticBackdropLabel">{{this.ticket_number}}</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body">
+                             <img src="{{this.photo}}" alt="">
+                              ticket_number : {{this.ticket_number }} <br />
+                              date_show :{{this.date_show }} </br>
+                              time_show :{{this.time_show }} </br>
+                              price : {{this.price}} </br>
+                              venue : {{this.venue}}</br>
+                              movie : {{this.movie}} <br />
+                              user: {{this.user}} <br />
+                           </div>
+                           <div class="modal-footer">
+                              <form>
+                                   <a href="/delete-type/{{this.id}}" class="btn btn-info">Delete</a>
+                                 
+                                 <a href="/edit-ticket/{{this.id}}" class="btn btn-info">Edit</a>
+                              </form>
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                           </div>
+
+                            </div>
+                        </div>
+                    </div>
+                      </div>
+                      </div>
+                      {{/each}}
+
+		
+		</div>
+	</div>
+    </div>
+  </div>
+  
+  
+
+
+ 
+
+
+  {{footer}}
+
+
+

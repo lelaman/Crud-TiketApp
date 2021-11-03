@@ -1,0 +1,19 @@
+{{> header}}
+{{#if message}}
+    <div class="alert alert-{{message.type}}" role="alert">
+        {{message.message}}
+    </div>
+{{/if}}
+{{> navbar}}
+<div class="container pt-5 pb-3">
+    <form action="/edit-type" method="POST">
+    <input type="hidden" name="id" value="{{type.id}}">
+        <h1 class="h3 mb-3 fw-bold">Edit Type</h1>
+        <div class="mb-3">
+            <label for="name" class="form-label">Type Name</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Input type name" value="{{type.name}}">
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+{{> footer}}

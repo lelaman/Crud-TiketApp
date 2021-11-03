@@ -1,0 +1,61 @@
+<nav class='navbar navbar-expand-lg navbar-light'>
+  <div class='container'>
+   
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-bs-toggle='collapse'
+      data-bs-target='#navbarSupportedContent'
+      aria-controls='navbarSupportedContent'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' id='navbarSupportedContent'>
+      <ul class='navbar-nav ms-auto mb-2 mb-lg-0'>
+
+        {{#if isLogin}}
+          <li class='nav-item'>
+            <div class='dropdown'>
+              <a
+                class='dropdown-toggle'
+                href='#'
+                role='button'
+                id='dropdownMenuLink'
+                data-bs-toggle='dropdown'
+                aria-expanded='false'
+              >
+                <img
+                  src='/public/image/avatar_default.png'
+                  alt=''
+                  class='img-avatar'
+                />
+              </a>
+
+              <ul
+                class='dropdown-menu dropdown-menu-end'
+                aria-labelledby='dropdownMenuLink'
+              >
+               
+                <li><hr class='dropdown-divider' /></li>
+                <li><a class='dropdown-item' href='/logout'>
+                    <img src='/public/icon/logout.svg' alt='' class='me-2' />
+                    Logout</a></li>
+              </ul>
+            </div>
+
+          </li>
+        {{else}}
+          <li class='nav-item'>
+            <a class='btn-login me-3 px-4 py-1' href='/login'>Login</a>
+          </li>
+          <li class='nav-item'>
+            <a class='btn-register px-3 py-1' href='/register'>Register</a>
+          </li>
+        {{/if}}
+
+      </ul>
+    </div>
+  </div>
+</nav>

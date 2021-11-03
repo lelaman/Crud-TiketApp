@@ -1,0 +1,59 @@
+{{> header}}
+{{#if message}}
+    <div class="alert alert-{{message.type}}" role="alert">
+        {{message.message}}
+    </div>
+{{/if}}
+{{> navbar}}
+<div class="container pt-5 pb-3">
+    <h1 class="h3 mb-3 fw-bold text-light">{{title}}</h1>
+    <div class="bg-light card px-3">
+    <input type="hidden" name="id" id="id" value="{{ticket.id}}">
+    <input type="hidden" name="oldPhoto" id="oldPhoto" value="{{ticket.photo}}">
+        <div class="mb-3 mt-3">
+            <label for="ticket_number" class="form-label">Ticket_number</label>
+            <input type="text" class="form-control" name="ticket_number" id="ticket_number" placeholder="Input Ticket Number" value="{{ticket.ticket_number}}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="date_show" class="form-label">Date_show</label>
+            <input type="date" class="form-control" name="date_show" id="date_show" placeholder="Input Date" value="{{ticket.date_show}}" readonly>
+        </div>
+         <div class="mb-3 mt-3">
+            <label for="time_show" class="form-label">Time_show</label>
+            <input type="time" class="form-control" name="time_show" id="Time_show" placeholder="Input Date" value="{{ticket.time_show}}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="double" class="form-control" name="price" id="price" placeholder="Input price" value="{{ticket.price}}" readonly>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="venue" class="form-label">venue</label>
+            <input type="time" class="form-control" name="venue" id="venue" placeholder="Input venue" value="{{ticket.venue}}" readonly>
+        </div>
+        
+        <div id="preview" class="mb-3"></div>
+        <div class="mb-3">
+            <label for="movie" class="form-label">movie</label>
+            <input type="text" class="form-control" name="movie" id="movie" value="{{ticket.movie}}" readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="user" class="form-label">user</label>
+            <input type="text" class="form-control" name="user" id="user" value="{{ticket.user}}" readonly>
+        </div>
+        <a href="/list-ticket"><button class="btn btn-danger mb-3">Back</button></a>
+        <input type="hidden" id="url-thumbnail" value="{{ticket.photo}}">
+    </div>
+</div>
+
+<script>
+    const element = document.getElementById('preview');
+    const urlThumbnail = document.getElementById('url-thumbnail').value;
+    element.innerHTML = `<img src="${urlThumbnail}" style="width: 250px;" class="mt-3"/>`;
+    function handleChange(){
+        const value = URL.createObjectURL(event.target.files[0]);
+        console.log(value);
+        element.innerHTML = `<img src="${value}" style="width:250px;" class="mt-3">`;
+    }
+</script>
+{{> footer}}

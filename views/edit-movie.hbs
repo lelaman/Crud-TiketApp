@@ -1,0 +1,35 @@
+{{> header}}
+{{#if message}}
+    <div class="alert alert-{{message.type}}" role="alert">
+        {{message.message}}
+    </div>
+{{/if}}
+{{> navbar}}
+<div class="container pt-5 pb-3">
+    <form action="/edit-movie" method="POST">
+    <input type="hidden" name="id" id="id" value="{{movie.id}}">
+        <h1 class="h3 mb-3 fw-bold">Edit movie</h1>
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="name" class="form-control" name="name" id="name" value="{{movie.name}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="movie" class="form-label">Movie</label>
+            <input type="text" class="form-control" name="movie_hour" id="movie_hour" value="{{movie.movie_hour}}" required>
+        </div>
+        <div class="mb-3">
+            <label for="type_id" class="form-label">Type</label>
+            <select class="form-select" aria-label="Default select" name="type_id" id="type_id">
+            {{#each type}}
+                {{#select movie.type_id}}
+                <option value="{{this.typeId}}">{{this.type}}</option>
+                {{/select}}
+            {{/each}}
+            </select>
+        </div>
+        
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+{{> footer}}

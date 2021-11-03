@@ -1,0 +1,67 @@
+{{> header}}
+{{#if message}}
+    <div class="alert alert-{{message.type}}" role="alert">
+        {{message.message}}
+    </div>
+{{/if}}
+{{> navbar}}
+<div class="container pt-5 mb-5">
+    <form action="/add-ticket" method="POST"  enctype="multipart/form-data" >
+        <h1 class="h3 mb-3 fw-bold">Add Ticket</h1>
+        <div class="mb-3">
+            <label for="name" class="form-label">Number Ticket</label>
+            <input type="text" class="form-control" name="ticket_number" id="ticket_number" placeholder="Input Number Ticket" required>
+        </div>
+        <div class="mb-3">
+            <label for="date_show" class="form-label">Date</label>
+            <input type="date" class="form-control" name="date_show" id="date_show" placeholder="Input date" required>
+        </div>
+         <div class="mb-3">
+            <label for="time_show" class="form-label">time</label>
+            <input type="time" class="form-control" name="time_show" id="time_show" placeholder="Input date" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="double" class="form-control" name="price" id="price" placeholder="Input Price" required>
+        </div>
+         <div class="mb-3">
+            <label for="venue" class="form-label">venue</label>
+            <input type="text" class="form-control" name="venue" id="venue" placeholder="Input venue" required>
+        </div>
+
+         <div class="mb-3">
+            <label for="file" class="form-label">Photo</label><br clear="all">
+            <input name="photo" type="file" id="file" onchange="handleChange()">
+        </div>
+        <div id="preview" class="mb-3"></div>
+        <div class="mb-3">
+            <label for="movie_id" class="form-label">movie</label>
+            <select class="form-select" aria-label="Default select" name="movie_id" id="movie_id">
+                {{#each movie}}
+                <option value="{{this.movieId}}">{{this.movie}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="user_id" class="form-label">User</label>
+            <select class="form-select" aria-label="Default select" name="user_id" id="user_id">
+                {{#each user}}
+                <option value="{{this.userId}}">{{this.user}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    function handleChange(){
+        const element = document.getElementById('preview');
+        const value = URL.createObjectURL(event.target.files[0]);
+        console.log(value);
+        element.innerHTML = `<img src="${value}" style="width:250px;" class="mt-3">`;
+    }
+</script>
+
+
+{{> footer}}

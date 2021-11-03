@@ -1,0 +1,23 @@
+{{> header}}
+
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+  {{message.message}}
+</div>
+{{/if}}
+{{> navbar}}
+
+<div class="containerku">
+    <h1>Login</h1>
+ <form action="/login" method="post">
+ 
+<label>Email</label><br>
+<input type="text" name="email" placeholder="">
+<label>Password</label>
+<input type="password"placeholder="Password" name="password">
+<button>Log in</button>
+ </form>
+
+</div>
+
+{{> footer}}
